@@ -10,4 +10,8 @@ The systems uses a MariaDB database for data storage and PHP and Ajax to communi
 ------
 
 ## Documentation
-* 
+* [Intro Document](https://github.com/JustinG123/HakunaMatataHotels/blob/master/Documents/Hakuna%20Matata%20Hotels.pdf)
+* [Installation](https://github.com/JustinG123/HakunaMatataHotels/blob/master/Documents/Installation.pdf)
+* [Database diagram](https://github.com/JustinG123/HakunaMatataHotels/blob/master/Documents/DB%20Diagram.JPG)
+* [Process flow diagram](https://github.com/JustinG123/HakunaMatataHotels/blob/master/Documents/Process%20Flow%20Diagram.jpg)
+* [SQL Create script](https://github.com/JustinG123/HakunaMatataHotels/blob/master/Documents/Hakuna%20Matata.sql)
