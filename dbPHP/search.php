@@ -1,5 +1,6 @@
 
 <?php
+	// Populates the table in the "View reservation" modal
 
 	require_once('connect.php');
 
@@ -41,7 +42,6 @@
 		$sql .= "AND g.phone_number = \"{$data['contact']}\" ";
 	}
 
-	// print_r($sql);
 	$sql_result = sql_query($sql, $conn);
 
 	$table = "

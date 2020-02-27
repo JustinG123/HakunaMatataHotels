@@ -1,7 +1,18 @@
+<!-- 
+	Once a row is selected from the "Edit reservation" modal
+	this is where the user is redirected to actually edit
+	the information
+
+	It consists of a form with the users original information
+	pre-filled in and the user can then edit this information
+	and press update to update the Database information
+	or click cancel to cancel
+-->
+
 <h3 class="modal_title">Edit Selected Reservation</h3>
 <hr class="modal_rule">
 
-<form id="new_reservation_form" action="dbPHP/new_reservation.php">
+<form id="edit_reservation_form" action="dbPHP/update_reservation.php">
 	<div class="padding_bottom">
 		<div class="float_left">
 			<label for="fname">First name:</label><br>
@@ -37,7 +48,10 @@
 						$room_id = $room["room_id"];
 						$room_no = $room["room_num"];
 						$room_descr = $room["description"];
-						echo "<option value=$room_id alt=\"$room_descr\">Room $room_no</option>";
+						$selected = "";
+						($room_no === $_POST['res_data'][4]) ? $selected = "Selected" : $selected = "";
+							
+						echo "<option value=$room_id alt=\"$room_descr\" $selected>Room $room_no</option>";
 					}
 				?>
 			</select>
@@ -46,9 +60,42 @@
 			<input type="text" id="descr" name="descr" disabled>
 		</div>
 
+		<input type="hidden" id="res_id" name="res_id">
+		<input type="hidden" id="gu_id" name="gu_id">
+
 	</div>
 
 	<hr class="modal_rule">
 	<button type="button" class="modal_btn close_btn" id="close_btn" onClick="$('#modal_spot').toggle();">Close</button>
-	<button type="submit" class="modal_btn" id="submit_btn" disabled>Update</button>
-</form> 
+	<button type="submit" class="modal_btn" id="submit_btn">Update</button>
+</form>
+
+<script>
+	// Ajax query tto call "update_reservation" to update the database
+	// with the new information given in the form
+	$("#edit_reservation_form").submit(function(e) {
+		e.preventDefault();
+
+		var form = $(this);
+		var url = form.attr('action');
+
+		$.ajax({
+			type: "POST",
+			url: url,
+			data: form.serialize(),
+			success: function(data)
+			{
+
+				//Successful booking
+				if(data == 1) {
+					$('#modal_spot').toggle();
+					alert("Reservation successfully booked");
+				}
+				//Database fail
+				else if(data == 998) {
+					alert("Failed to write to database");
+				}
+			}
+		});
+	});
+</script>

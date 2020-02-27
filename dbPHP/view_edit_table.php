@@ -1,4 +1,5 @@
 <?php
+	// Loads the table with selectable rows to edit in the "Edit reservation" modal
 	require 'connect.php';
 
 	function sql_query($sql, $conn) {
@@ -17,7 +18,7 @@
 	}
 
 	$sql = "
-		Select g.name, g.surname, g.phone_number, g.email_address, ro.room_num, r.check_in_date, r.check_out_date, r.id
+		Select g.name, g.surname, g.phone_number, g.email_address, ro.room_num, r.check_in_date, r.check_out_date, r.id, g.guest_id
 			From reservation r 
 			INNER JOIN guest g on r.guest_id = g.guest_id
 			INNER JOIN rooms ro on r.room_id = ro.room_id
@@ -38,8 +39,9 @@
 	";
 
 	foreach($data as $row) {
+		$guest_id = array_pop($row);
 		$row_id = array_pop($row);
-		$table .= "<tr id=\"$row_id\" class=\"select_row\">";
+		$table .= "<tr id=\"$row_id\" data_guestid=\"$guest_id\" class=\"select_row\">";
 		foreach($row as $item) {
 			$table .= "<td>$item</td>";
 		}

@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<!-- 
+	The landing page with company logo and the 3 options
+-->
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,12 +15,8 @@
 
 </head>
 	<body>
-		<?php //include 'make_modal.php';?>
-		<?php //include 'view_modal.php';?>
-		<?php //include 'edit_modal.php';?>
 		
 		<div class="main_content">
-			<!-- <h1 class="heading">Hakuna Matata Hotels</h1> -->
 			<img class="title_image" src="resources/bg.jpg" alt="Hakuna Matata Hotels">
 			<h1 class="heading">Hakuna<br>Matata<br>Hotels</h1>
 		</div>
@@ -25,7 +24,6 @@
 		<div class="options">
 			<div class="button make_reservation" id="make_reservation">
 				Make reservation
-				<?php // include 'test.php'; ?>
 			</div>
 			<div class="button edit_reservation" id="edit_reservation">
 				Edit reservation
@@ -40,6 +38,11 @@
 	</body>
 
 	<script src="js/scripts.js"></script>
+	<!-- 
+		Once an option is clicked the even is sent to a script which sends the
+		event to the server using ajax (modal.php) which then opens the relevant
+		modal based on what they clicked
+	 -->
 	<script>
 		$(".button").on('click', function(e) {
 			load_modal(e);

@@ -1,5 +1,6 @@
-
-
+<!--
+	Opens the relevant modal based on the option the user selected
+-->
 <div id="modal" class="modal">
 	<div class="modal-content">
 
@@ -13,9 +14,6 @@
 			else if($_POST['src'] == 'edit_reservation') {
 				include 'edit_modal.php';
 			}
-			// else if($_POST['src'] == 'view_edit') {
-			// 	include 'edit_info_modal.php';
-			// }
 		?>
 		
 	</div>

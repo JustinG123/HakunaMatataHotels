@@ -1,9 +1,7 @@
 <?php
 	require_once('connect.php');
 
-	// print_r($_POST);
-	// echo $_POST['res_id'];
-
+	// Returns the first value found in the database
 	function sql_one($sql, $conn) {
 		$result = $conn->query($sql);
 		$res = "";
@@ -17,6 +15,7 @@
 		return $res;
 	}
 
+	// Writes the given SQL query to the database
 	function write_sql($sql, $conn) {
 		if ($conn->query($sql) === TRUE) {
 			return 1;
@@ -26,6 +25,7 @@
 
 	}
 
+	// Returns all values matching the query in the database
 	function sql_query($sql, $conn) {
 		$result = $conn->query($sql);
 		$res = array();
@@ -71,12 +71,12 @@
 		return;
 	}
 
-	// Check if person exists, if no create
+	// Check if person exists, if no create them
 	$sql = "SELECT * FROM guest WHERE name = \"{$data["fname"]}\" AND surname = \"{$data["lname"]}\" 
 			AND email_address = \"{$data["email"]}\" AND phone_number = \"{$data["contact"]}\"";
 	$person = sql_one($sql, $conn);
 
-	// If person no exist, summon them into existance
+	// If person does not exist, summon them into existance
 	if($person == "") {
 		$sql = "INSERT INTO guest (name, surname, email_address, phone_number)
 				VALUES (\"{$data["fname"]}\", \"{$data["lname"]}\", \"{$data["email"]}\", \"{$data["contact"]})\"";
@@ -104,17 +104,6 @@
 	
 	$conn->close();
 	echo 1;
-
-	// (
-	// 	[fname] => Bob
-	// 	[email] => Bob@Bobson.com
-	// 	[lname] => Bobson
-	// 	[contact] => 0123456789
-	// 	[check_in] => 2020-02-26
-	// 	[check_out] => 2020-02-27
-	// 	[room] => 4
-	// )
-	
 ?>
 
 

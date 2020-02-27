@@ -1,10 +1,11 @@
 
 <?php
 
-	function read_all($column) {
+	// Read All information from a given table
+	function read_all($table) {
 		require 'connect.php';
 
-		$sql = "SELECT * FROM $column";
+		$sql = "SELECT * FROM $table";
 		$result = $conn->query($sql);
 		$data = array();
 

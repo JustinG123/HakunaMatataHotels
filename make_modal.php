@@ -1,3 +1,11 @@
+<!--
+	Where the user is redirected if they click "Make reservation"
+	it contains a form for the user to enter information for a new
+	reservation.
+	If the user does not exist it creates the user,
+	if the room is already booked during the period they selected
+	it tells them and allows them to reselect
+-->
 
 <h3 class="modal_title">New reservation</h3>
 <hr class="modal_rule">
@@ -33,7 +41,6 @@
 					include 'dbPHP/get.php';
 
 					$rooms = read_all("rooms");
-					// print_r($rooms);
 					foreach($rooms as $room) {
 						$room_id = $room["room_id"];
 						$room_no = $room["room_num"];
@@ -74,7 +81,6 @@ $("input").focusout(function() {
 })
 
 function select_room() {
-	// var room_id = document.getElementById("room").value;
 	var room_id = $("#room option:selected").attr("alt");
 	$("#descr").val(room_id);
 
@@ -136,7 +142,6 @@ $(document).ready(function(){
 			success: function(data)
 			{
 
-				// console.log(data);
 				//Successful booking
 				if(data == 1) {
 					$('#modal_spot').toggle();
@@ -156,17 +161,17 @@ $(document).ready(function(){
 
 
 
-	//DELETE (Fills in test data to form)
-	$("#fname").val("Fred");
-	$("#lname").val("Fredson");
-	$("#email").val("Fred@Fredson.com");
-	$("#contact").val("2323232323");
+	//(Fills in test data to form)
+	// $("#fname").val("Fred");
+	// $("#lname").val("Fredson");
+	// $("#email").val("Fred@Fredson.com");
+	// $("#contact").val("2323232323");
 
-	if(validateContact($("#contact")[0].value) && validateEmail($("#email")[0].value)) {
-		$("#submit_btn").attr('disabled', false);
-	}
-	else {
-		$("#submit_btn").attr('disabled', true);
+	// if(validateContact($("#contact")[0].value) && validateEmail($("#email")[0].value)) {
+	// 	$("#submit_btn").attr('disabled', false);
+	// }
+	// else {
+	// 	$("#submit_btn").attr('disabled', true);
 	}
 })
 </script>

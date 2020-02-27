@@ -1,3 +1,10 @@
+<!--
+	Where the user is redirected if they click "View reservation"
+	Contains a form for the user to enter some information to search
+	for a user, they can fill in only one or 2 fields and it will
+	search by only those field, if they enter no fields it shows
+	all reservations
+-->
 
 <h3 class="modal_title">View Reservations</h3>
 <hr class="modal_rule">
