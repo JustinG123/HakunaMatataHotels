@@ -89,7 +89,7 @@
 				//Successful booking
 				if(data == 1) {
 					$('#modal_spot').toggle();
-					alert("Reservation successfully booked");
+					alert("Reservation successfully updated");
 				}
 				//Database fail
 				else if(data == 998) {
