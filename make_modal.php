@@ -172,6 +172,6 @@ $(document).ready(function(){
 	// }
 	// else {
 	// 	$("#submit_btn").attr('disabled', true);
-	}
+	// }
 })
 </script>
